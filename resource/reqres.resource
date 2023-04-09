@@ -134,3 +134,7 @@ atualizo o usuário
 comparo os valores dos campos string
     [Arguments]    ${valor1}    ${valor2}
     Should Be Equal    ${valor1}    ${valor2}
+
+deleto o usuário
+    ${responseBody}=    DELETE    url=${url}/users/${id}
+    Set Global Variable    ${responseBody}

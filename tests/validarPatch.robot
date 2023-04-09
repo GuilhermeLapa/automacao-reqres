@@ -1,6 +1,5 @@
 *** Settings ***
 Library    RequestsLibrary
-Library    String
 Resource    ../resource/reqres.resource
 
 *** Test Cases ***
