@@ -8,15 +8,15 @@ Cenário 01: Login Sucesso
     Given que possuo email e senha válidos
     When efetuo login
     Then verifico o status code    200
-    And verifico que existe a chave    token
-    And verifico o valor do campo    token    QpwL5tke4Pnpja7X4
+    And verifico que existe a chave    $    token
+    And verifico o valor do campo string no json    token    QpwL5tke4Pnpja7X4
 
 Cenário 02: Login Erro Obrigatoriedade
     [Tags]    Login
     Given que não possuo email e senha
     When efetuo login
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Missing email or username
 
 Cenário 03: Login Erro Obrigatoriedade Campo Email
@@ -24,7 +24,7 @@ Cenário 03: Login Erro Obrigatoriedade Campo Email
     Given que possuo email mas não possuo senha
     When efetuo login
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Missing password
 
 Cenário 04: Login Erro Obrigatoriedade Campo Senha
@@ -32,7 +32,7 @@ Cenário 04: Login Erro Obrigatoriedade Campo Senha
     Given que não possuo email mas possuo senha
     When efetuo login
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Missing email or username
 
 Cenário 05: Login Erro Usuário Inexistente
@@ -47,15 +47,15 @@ Cenário 06: Registrar Usuário Sucesso
     Given que possuo email e senha para registro
     When efetuo cadastro
     Then verifico o status code    200
-    And verifico que existe a chave    id
-    And verifico que existe a chave    token
+    And verifico que existe a chave    $    id
+    And verifico que existe a chave    $    token
 
 Cenário 07: Registrar Usuário Não Definido
     [Tags]    Register
     Given que possuo dados de usuário não definido
     When efetuo cadastro
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Note: Only defined users succeed registration
 
 Cenário 08: Registrar Erro Obrigatoriedade
@@ -63,7 +63,7 @@ Cenário 08: Registrar Erro Obrigatoriedade
     Given que não possuo email e senha para registro
     When efetuo cadastro
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Missing email or username
 
 Cenário 09: Registrar Erro Obrigatoriedade Senha
@@ -71,7 +71,7 @@ Cenário 09: Registrar Erro Obrigatoriedade Senha
     Given que possuo email mas não possuo senha para registro
     When efetuo cadastro
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Missing password
 
 Cenário 10: Registrar Erro Obrigatoriedade Email
@@ -79,5 +79,5 @@ Cenário 10: Registrar Erro Obrigatoriedade Email
     Given que não possuo email mas possuo senha para registro
     When efetuo cadastro
     Then verifico o status code    400
-    And verifico que existe a chave    error
+    And verifico que existe a chave    $    error
     And verifico a mensagem de erro    Missing email or username
