@@ -3,6 +3,8 @@ Library    Collections
 Library    RequestsLibrary
 Library    JSONLibrary
 Library    SeleniumLibrary
+Library    String
+Library    DateTime
 
 *** Variables ***
 ${url}    https://reqres.in/api
@@ -100,3 +102,35 @@ consulto a lista de usuários
     ${responseBody}=    Get    ${url}${urlListarUsuarios}    json=${body}    expected_status=anything
     Set Global Variable    ${responseBody}
     Log    Resposta: ${responseBody}
+
+que possuo um id de usuário
+    ${body}    Create Dictionary    email=${email}    password=${password}
+    ${responseBody}    POST    ${url}${urlRegister}    json=${body}    expected_status=anything
+    Set Global Variable    ${responseBody}
+    ${id}=    Set Variable    ${responseBody.json()['id']}
+    Set Global Variable    ${id}
+
+    ${body}    Create Dictionary    id=${id}
+    ${responseBody}=    Get    ${url}/users/${id}    json=${body}    expected_status=anything
+    Set Global Variable    ${responseBody}
+    ${name}=    Set Variable    ${responseBody.json()['data']['first_name']}
+    Set Global Variable    ${name}
+
+atualizo o usuário
+    [Arguments]    ${job}
+    ${body}=    Create Dictionary    name=${name}    job=${job}
+    Set Global Variable    ${body}
+    ${responseBody}    PATCH    url=${url}/users/${id}    json=${body}    expected_status=anything
+    Set Global Variable    ${responseBody}
+
+    ${updatedAt}=    Set Variable    ${responseBody.json()['updatedAt']}
+    ${updatedAt}=    Get Substring    ${updatedAt}    0    10
+    Set Global Variable    ${updatedAt}
+    
+    ${dataAtual}=    Get Current Date
+    ${dataAtual}=    Get Substring    ${dataAtual}    0    10
+    Set Global Variable    ${dataAtual}
+
+comparo os valores dos campos string
+    [Arguments]    ${valor1}    ${valor2}
+    Should Be Equal    ${valor1}    ${valor2}
