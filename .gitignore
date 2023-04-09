@@ -1,0 +1,3 @@
+*.code-workspace
+/reports
+interactive_console_output.xml
