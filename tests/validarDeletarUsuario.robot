@@ -2,6 +2,8 @@
 Resource    ../resource/reqres.resource
 Library    RequestsLibrary
 
+# Feature: DELETE - Deletar Usuário
+
 *** Test Cases ***
 Cenário 01: Deletar Usuário Sucesso
     [Tags]    DeleteUser

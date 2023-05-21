@@ -2,6 +2,8 @@
 Library    RequestsLibrary
 Resource    ../resource/reqres.resource
 
+# Feature: PATCH - Atualizar Usuário
+
 *** Test Cases ***
 Cenário 01: Atualizar Usuário Sucesso
     [Tags]    UpdateUser

@@ -2,6 +2,8 @@
 Library    RequestsLibrary
 Resource    ../resource/reqres.resource
 
+# Feature: GET - Consultar Lista de Usuários
+
 *** Test Cases ***
 Cenário 01: Consultar Lista de Usuários Sucesso
     [Tags]    Users

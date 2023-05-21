@@ -2,6 +2,8 @@
 Resource    ../resource/reqres.resource
 Library    RequestsLibrary
 
+# Feature: POST - Criar Sessão Login
+
 *** Test Cases ***
 Cenário 01: Login Sucesso
     [Tags]    Login
